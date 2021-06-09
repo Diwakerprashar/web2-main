@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style0.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script-->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <div class="topnav col-md-12 bg-dark">
+      <a href="/page2">Back</a>
+      <a href="/contacts">Contact</a>
+      <a href="/about">About</a>
+      <a href="https://github.com/Diwakerprashar"><i class="fab fa-github text-white mr-3"></i></a>
+      <a href="https://www.instagram.com/prashar.diwaker/"><i class="fab fa-instagram text-white mr-3"></i></a>
+      <a href="https://www.linkedin.com/in/diwaker-prashar-0009/"><i class="fab fa-linkedin-in text-white mr-3"></i></a>
+      <a href="https://www.facebook.com/prashar.diwaker.50/r"><i class="fab fa-facebook text-white mr-3"></i></a>
+      <a href="/logout">Logout</a>
+    </div>
+    <div class="container">
+      <form action="/predict" method="post">
+      <div class="row">
+        <div class="col-12 text-center" style="padding: 30px 50px 40px 10px;"> <h3> Predict Weather </h3>
+        </div>
+
+        <div class="col-md-5 text-right">
+          <label for=""><b>Temperature</b></label>
+        </div>
+        <div class="col-md-3 text-left">
+          <input type="number"class="form-control" name="Temperature" value="temp">
+        </div>
+         </div>
+
+         <div class="row">
+           <div class="col-md-5 text-right">
+             <label for=""><b>Relative Humidity</b></label>
+           </div>
+           <div class="col-md-3 text-left">
+             <input type="number"class="form-control" name="Humidity" value="humidity">
+           </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 text-right">
+            <label for=""><b>Cloud Cover</b></label>
+          </div>
+          <div class="col-md-3 text-left">
+            <select class="browser-default custom-select" name="Cloudcover">
+              <option selected="">Select cloud cover</option>
+              <option value="0">0(Clear)</option>
+              <option value="1">1(Little cloudy)</option>
+              <option value="2">2(Cloudy)</option>
+              <option value="3">3(Most Cloudy)</option>
+            </select>
+          </div>
+         </div>
+
+         <div class="row">
+           <div class="col-md-5 text-right">
+             <label for=""><b>Precipitation Cover</b></label>
+           </div>
+           <div class="col-md-3 text-left">
+             <select class="browser-default custom-select" name="Precipitation">
+               <option selected="">Select Precipitation</option>
+               <option value="1">(0-30)%</option>
+               <option value="2">(30-70)%</option>
+               <option value="3">(70-100)%</option>
+             </select>
+           </div>
+         </div>
+
+
+        <div class="row form-group row">
+          <div class="col-md-12" style="padding: 40px 0 10px 500px;">
+            <button  type="reset" class="col-2 btn btn-primary text-center">Clear</button>
+            <button type="submit" class="form-control col-2 btn btn-primary text-center" name="predict">Predict</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br> {{pred}}<br>
+
+    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-interval="3000">
+          <img src="static/distribution temp.jpg" class="d-block w-50 center" alt="...">
+        </div>
+        <div class="carousel-item" data-interval="3000">
+          <img src="static/distribution Rel-hum.jpg" class="d-block w-50 center" alt="...">
+        </div>
+        <div class="carousel-item" data-interval="3000">
+          <img src="static/distributioncloud.jpg" class="d-block w-50 center" alt="...">
+        </div>
+        <div class="carousel-item" data-interval="3000">
+          <img src="static/Temp-rel-bar.jpg" class="d-block w-50 center" alt="...">
+        </div>
+        <div class="carousel-item" data-interval="3000">
+          <img src="static/tempcloud.jpg" class="d-block w-50 center" alt="...">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </body>
+</html>
